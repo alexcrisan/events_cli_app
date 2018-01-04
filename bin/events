@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+# require './lib/events_cli_app'
+
+require "bundler/setup"
+require "events_cli_app"
+
+EventsCliApp::CLI.new.call
+
+#This is the executable file, the one that gets the program running.
+#Because this is not a ruby file, we must type the top line starting with #
