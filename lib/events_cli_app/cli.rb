@@ -49,15 +49,14 @@ class EventsCliApp::CLI
       when "d"
         self.list_events_with_date
       when "list"
-        list_events
+        list_events_alphabetically
       else
-        if input =~ /\d/
-          puts "you're inside the belly of the beast!"
+        if input =~ /\d/ && input.to_i > 0 && input.to_i < EventsCliApp::Event.all.length
           index = input.to_i - 1
           EventsCliApp::Event.show_details(index)
           self.menu
         else
-          puts "Please enter a valid number, type 'list' to see all events, or 'exit' to exit."
+          puts "Please enter a valid number between 1 and #{EventsCliApp::Event.all.length}, type 'list' to see all events, or 'exit' to exit."
         end
       end
     end
