@@ -1,14 +1,13 @@
-# our cli controller - deals with user interactions
 class EventsCliApp::CLI
 
   attr_accessor :name, :tags, :description, :date, :link, :website
-  def call #the call method is reserved by ruby and is called when the program runs.
+  def call 
     get_events
     menu
   end
 
   def get_events
-    EventsCliApp::Event.scrape_events
+    EventsCliApp::Scraper.scrape_events
   end
 
   def list_events_alphabetically
@@ -24,9 +23,6 @@ class EventsCliApp::CLI
   def list_events_with_tags
     sorted_events = EventsCliApp::Event.all.sort_by {|event| event.name}
     sorted_events.each {|event| puts (sorted_events.index(event) + 1).to_s + ". " + event.name + " - " + event.tags.to_s}
-  end
-
-  def show_description(event)
   end
 
   def menu
