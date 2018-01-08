@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 
-# require './lib/events_cli_app'
-
-require "bundler/setup"
-require "events_cli_app"
+require_relative "../lib/events_cli_app"
 
 EventsCliApp::CLI.new.call
 

@@ -1,7 +1,8 @@
 class EventsCliApp::CLI
 
   attr_accessor :name, :tags, :description, :date, :link, :website
-  def call 
+  def call
+    introduction
     get_events
     menu
   end
@@ -23,6 +24,11 @@ class EventsCliApp::CLI
   def list_events_with_tags
     sorted_events = EventsCliApp::Event.all.sort_by {|event| event.name}
     sorted_events.each {|event| puts (sorted_events.index(event) + 1).to_s + ". " + event.name + " - " + event.tags.to_s}
+  end
+
+  def introduction
+    puts "Welcome to the Pittsburgh, PA events application!"
+    puts "Please wait while we gather your events..."
   end
 
   def menu
